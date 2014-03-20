@@ -8,6 +8,7 @@
     "angular-cookies": "~1.2.14",
     "angular-resource": "~1.2.14",
     "angular-bootstrap": "~0.10.0",
-    "angular-ui-router": "~0.2.10"
+    "angular-ui-router": "~0.2.10",
+    "angular-ui-calendar": "~0.8.0"
   }
 }

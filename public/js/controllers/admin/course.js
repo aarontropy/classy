@@ -13,4 +13,22 @@ angular.module('classy.admin').controller('admin.CourseDetailController',
             if ($scope.course.$update) { $scope.course.$update(); }
         };
 
+        // ==== FULLCALENDAR SETUP =============================================
+        $scope.eventSource = {
+            url: "/course/" + cid + "/events/",
+        };
+        $scope.eventSources = [$scope.eventSource];
+
+        $scope.uiConfig = {
+            calendar:{
+                height: 450,
+                editable: true,
+                header:{
+                    left: 'title',
+                    center: '',
+                    right: 'today prev,next'
+                }
+            }
+        };
+
 }]);
