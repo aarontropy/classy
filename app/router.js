@@ -22,6 +22,7 @@ module.exports = function(app, passport) {
     app.get('/semesters/:semesterId', sem.read);
     app.put('/semesters/:semesterId', sem.update);
     app.del('/semesters/:semesterId', sem.delete);
+    app.get('/semesters/:semesterId/courses', sem.courses);
 
     app.get('/courses', course.all);
     app.post('/courses', course.create);
@@ -37,6 +38,7 @@ module.exports = function(app, passport) {
     app.del('/users/:user', users.delete);
 
     app.param('semesterId', sem.semester);
+    app.param('courseId', course.course);
     app.param('userId', users.user);
 
 };

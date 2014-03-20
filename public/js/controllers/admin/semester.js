@@ -1,18 +1,27 @@
 'use strict';
 
 angular.module('classy.admin').controller('admin.SemesterDetailController',
-    ['$scope', '$stateParams', '$resource',
-    function($scope, $stateParams, $resource) {
+    ['$scope', '$stateParams', '$state', 'Semesters',
+    function($scope, $stateParams, $state, Semesters) {
+        var sid = $stateParams.semesterId;
 
-        var semesters = $resource('/semesters/:id',
-            {id: '@_id'},
-            {update: {method: 'PUT'}}
-        );
-        $scope.semester = semesters.get({id: $stateParams.semesterId});
+        $scope.semester = Semesters.get({id: sid});
+        $scope.courses = Semesters.getCourses(sid);
 
         $scope.save = function() {
             if ($scope.semester.$update) { $scope.semester.$update(); }
         };
+
+        $scope.addCourse = function() {
+            Semesters.addCourse({title: 'New Course', semester: sid}, function() {
+                $scope.courses = Semesters.getCourses(sid);
+            });
+
+        };
+
+        $scope.goCourseDetail = function(id) {
+            $state.go('course-detail', {courseId: id});
+        }
 
 
 }]);

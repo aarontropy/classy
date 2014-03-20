@@ -16,5 +16,9 @@ angular.module('classy.admin').config(['$stateProvider', '$urlRouterProvider', f
     .state('semester-detail', {
         url: '/semesters/:semesterId',
         templateUrl: '/views/admin/semester-detail.html'
+    })
+    .state('course-detail', {
+        url: '/courses/:courseId',
+        templateUrl: '/views/admin/course-detail.html'
     });
 }]);

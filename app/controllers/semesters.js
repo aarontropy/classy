@@ -2,6 +2,7 @@
 
 var mongoose = require('mongoose'),
     Semester = mongoose.model('Semester'),
+    Course = mongoose.model('Course'),
     _ = require('lodash');
 
 /**
@@ -78,6 +79,16 @@ exports.all = function(req, res) {
             });
         } else {
             res.json(semesters);
+        }
+    });
+};
+
+exports.courses = function(req, res) {
+    Course.find({semester: req.semester._id}).populate('createdBy', 'username').exec(function(err, courses) {
+        if (err) {
+            res.json(500, {errors: err.errors});
+        } else {
+            res.json(courses);
         }
     });
 };
