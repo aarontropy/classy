@@ -26,7 +26,7 @@ app.use(express.methodOverride());
 app.use(express.cookieParser('LAKJOPA*SdygfLUf98dsl230dkKL'));
 app.use(express.session());
 app.use(function(req, res, next) {
-    res.locals.appname = "Classy";
+    res.locals.appname = 'Classy';
     next();
 });
 app.use(app.router);
