@@ -15,3 +15,8 @@ exports.login = function(passport) {
     };
 };
 
+exports.logout = function(req, res) {
+    req.logout();
+    res.json({message: 'Logout successful'});
+};
+

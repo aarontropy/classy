@@ -6,8 +6,8 @@ angular.module('classy.system').factory('Auth', ['$http', function($http) {
         login: function(credentials) {
             return $http.post('/login', credentials);
         },
-        logout: function(credentials) {
-            return $http.post('/logout', credentials);
+        logout: function() {
+            return $http.post('/logout', {});
         }
     };
 }]);

@@ -10,5 +10,6 @@ module.exports = function(app, passport) {
     app.get('/admin/?', admin.dashboard);
 
     app.post('/login/?', auth.login(passport));
+    app.post('/logout/?', auth.logout);
 
 };
