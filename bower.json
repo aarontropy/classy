@@ -1,7 +1,8 @@
 {
-    "name": "classy",
-    "version": "0.0.1",
-    "dependencies": {
-        "bootstrap": "3.0.3"
-    }
+  "name": "classy",
+  "version": "0.0.1",
+  "dependencies": {
+    "bootstrap": "3.0.3",
+    "jquery": "~2.1.0"
+  }
 }

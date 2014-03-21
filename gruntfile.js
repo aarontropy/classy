@@ -2,6 +2,7 @@
 
 module.exports = function(grunt) {
     grunt.initConfig({
+        pkg: grunt.file.readJSON('package.json'),
         watch: {
             js: {
                 files: ['gruntfile.js', 'server.js', 'app/**/*.js', 'public/js/**', 'test/**/*.js'],
@@ -52,21 +53,31 @@ module.exports = function(grunt) {
             options: {
                 logConcurrentOutput: true
             }
+        },
+        uglify: {
+            jquery: {
+                files: {
+                    'public/lib/jquery/jquery.min.js': ['public/lib/jquery/src/jquery.js']
+                }
+            }
         }
+        
     });
-
-    //Load NPM tasks
-    grunt.loadNpmTasks('grunt-contrib-watch');
-    grunt.loadNpmTasks('grunt-contrib-jshint');
-    grunt.loadNpmTasks('grunt-nodemon');
-    grunt.loadNpmTasks('grunt-concurrent');
-
 
     //Making grunt default to force in order not to break the project.
     grunt.option('force', true);
 
-    //Default task(s).
+    //Load NPM tasks
+    // grunt.loadNpmTasks('grunt-contrib-concat');
+    grunt.loadNpmTasks('grunt-contrib-watch');
+    grunt.loadNpmTasks('grunt-contrib-jshint');
+    grunt.loadNpmTasks('grunt-contrib-uglify');
+    grunt.loadNpmTasks('grunt-nodemon');
+    grunt.loadNpmTasks('grunt-concurrent');
+
+    //Custom task(s).
     grunt.registerTask('default', ['jshint', 'concurrent']);
+    grunt.registerTask('prep', []);
 
 
 };

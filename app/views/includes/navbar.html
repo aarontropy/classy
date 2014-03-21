@@ -29,15 +29,20 @@
       </form>
 
       <ul class="nav navbar-nav navbar-right">
+        <li><a href="#" >Sign Up</a></li>
+        <li class="divider-vertical"></li>
         <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Sign In <b class="caret"></b></a>
-          <ul class="dropdown-menu">
-            <li><a href="#">Action</a></li>
-            <li><a href="#">Another action</a></li>
-            <li><a href="#">Something else here</a></li>
-            <li class="divider"></li>
-            <li><a href="#">Separated link</a></li>
-          </ul>
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Sign In <b class="caret"></b></a>
+                <div class="dropdown-menu" style="padding: 15px;">
+                    <form action="[YOUR ACTION]" method="post" accept-charset="UTF-8">
+                        <input id="username" style="margin-bottom: 15px;" type="text" name="username" placeholder="Username" size="30" />
+                        <input id="password" style="margin-bottom: 15px;" type="password" name="password" placeholder="Password" size="30" />
+                        <input id="remember_me" style="float: left; margin-right: 10px;" type="checkbox" name="remember_me" value="1" />
+                        <label class="string optional" for="remember_me"> Remember me</label>
+
+                        <input class="btn btn-primary" style="clear: left; width: 100%; height: 32px; font-size: 13px;" type="submit" name="commit" value="Sign In" />
+                    </form>
+                </div>
         </li>
       </ul>
 
@@ -45,3 +50,13 @@
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>
+
+<script>
+    $(document).ready(function() {
+
+        $('.dropdown-toggle').dropdown();
+        $('.dropdown input, .dropdown label').click(function(e) {
+            e.stopPropagation();
+        });
+    });
+</script>

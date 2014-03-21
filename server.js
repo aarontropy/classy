@@ -3,16 +3,42 @@
  * Module dependencies.
  */
 
-var express = require('express');
-var http = require('http');
-var path = require('path');
-var engines = require('consolidate');
+var express = require('express'),
+    http = require('http'),
+    path = require('path'),
+    engines = require('consolidate'),
+    mongoose = require('mongoose'),
+    fs = require('fs');
+
+
+// Set the node environment variable if not set before
+process.env.NODE_ENV = process.env.NODE_ENV || 'development';
+var config = require('./config/config');
 
 var app = express();
 
 // all environments
 app.set('port', process.env.PORT || 3000);
 app.set('views', path.join(__dirname, 'app/views'));
+
+// Config db and bootstrap models
+var db = mongoose.connect(config.db);
+
+var models_path = __dirname + '/app/models';
+var walk = function(path) {
+    fs.readdirSync(path).forEach(function(file) {
+        var newPath = path + '/' + file;
+        var stat = fs.statSync(newPath);
+        if (stat.isFile()) {
+            if (/(.*)\.(js$|coffee$)/.test(file)) {
+                require(newPath);
+            }
+        } else if (stat.isDirectory()) {
+            walk(newPath);
+        }
+    });
+};
+walk(models_path);
 
 // use swig and make .html the default view extension
 app.engine('html', engines.swig);
