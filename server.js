@@ -52,16 +52,17 @@ app.use(express.urlencoded());
 app.use(express.methodOverride());
 app.use(express.cookieParser('LAKJOPA*SdygfLUf98dsl230dkKL'));
 app.use(express.session());
-app.use(function(req, res, next) {
-    res.locals.appname = 'Classy';
-    next();
-});
 
 // Use passport session
 require('./config/passport')(passport);
 app.use(passport.initialize());
 app.use(passport.session());
 
+app.use(function(req, res, next) {
+    res.locals.appname = 'Classy';
+    res.locals.user = req.user ? JSON.stringify(req.user) : 'null';
+    next();
+});
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(app.router);
 
