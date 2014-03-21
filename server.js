@@ -8,6 +8,7 @@ var express = require('express'),
     path = require('path'),
     engines = require('consolidate'),
     mongoose = require('mongoose'),
+    passport = require('passport'),
     fs = require('fs');
 
 
@@ -55,8 +56,16 @@ app.use(function(req, res, next) {
     res.locals.appname = 'Classy';
     next();
 });
-app.use(app.router);
+
+// Use passport session
+require('./config/passport')(passport);
+app.use(passport.initialize());
+app.use(passport.session());
+
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(app.router);
+
+
 
 // development only
 if ('development' === app.get('env')) {
@@ -64,7 +73,7 @@ if ('development' === app.get('env')) {
 }
 
 // Get the router
-require('./app/router')(app);
+require('./app/router')(app, passport);
 
 http.createServer(app).listen(app.get('port'), function(){
     console.log('Express server listening on port ' + app.get('port'));

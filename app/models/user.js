@@ -11,15 +11,12 @@ var mongoose = require('mongoose'),
  * User Schema
  */
 var UserSchema = new Schema({
-    name: {
-        type: String,
-        required: true
-    },
-    email: String,
     username: {
         type: String,
         unique: true
     },
+    name: String,
+    email: String,
     hashed_password: String,
     provider: String,
     salt: String,
@@ -125,4 +122,13 @@ UserSchema.methods = {
     }
 };
 
-mongoose.model('User', UserSchema);
+var User = mongoose.model('User', UserSchema);
+
+User.find().count().exec(function(err, n) {
+    if (n === 0) {
+        console.log('creating new user');
+        var admin = new User({username: 'admin', password: 'admin'});
+        admin.save();
+    }
+});
+
