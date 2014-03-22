@@ -1,3 +1,4 @@
+// Users Service
 'use strict';
 
 angular.module('classy').factory('Users', ['$resource', function($resource) {

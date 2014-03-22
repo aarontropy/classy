@@ -4,8 +4,13 @@ angular.module('classy.admin').config(['$stateProvider', '$urlRouterProvider', f
     // for unmatched routes:
     $urlRouterProvider.otherwise('/');
 
-    $stateProvider.state('dashboard', {
+    $stateProvider
+    .state('dashboard', {
         url: '/',
         templateUrl: '/views/admin/dashboard.html'
+    })
+    .state('users', {
+        url: '/users',
+        templateUrl: '/views/admin/users.html'
     });
 }]);
