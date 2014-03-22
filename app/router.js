@@ -9,7 +9,7 @@ var users = require('./controllers/users');
 module.exports = function(app, passport) {
 
     app.get('/', pub.index);
-    app.get('/admin/', auth.requireRole('admin'), admin.dashboard);
+    app.get('/admin/', admin.dashboard); //auth.requireRole('admin'), admin.dashboard);
 
     app.post('/login', auth.login(passport));
     app.post('/logout', auth.logout);
