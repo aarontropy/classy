@@ -28,6 +28,6 @@ exports.requireRole = function(role) {
         } else {
             res.send(403);
         }
-    }
-}
+    };
+};
 

@@ -1,4 +1,4 @@
-'user strict';
+'use strict';
 
 angular.module('classy.admin').controller('admin.UsersController', ['$scope', 'Users', function($scope, Users) {
     $scope.users = null;
@@ -10,4 +10,4 @@ angular.module('classy.admin').controller('admin.UsersController', ['$scope', 'U
     };
 
     $scope.find();
-}])
+}]);

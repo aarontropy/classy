@@ -23,7 +23,7 @@ exports.create = function(req, res) {
         if (err) {
             res.json(500, {
                 errors: err.errors,
-                semester: sem 
+                semester: sem
             });
         } else {
             res.json(201, sem);
@@ -79,5 +79,5 @@ exports.all = function(req, res) {
         } else {
             res.json(semesters);
         }
-    })
+    });
 };

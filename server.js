@@ -4,6 +4,7 @@
  */
 
 var express = require('express'),
+    slash = require('express-slash'),
     http = require('http'),
     path = require('path'),
     engines = require('consolidate'),
@@ -21,6 +22,7 @@ var app = express();
 // all environments
 app.set('port', process.env.PORT || 3000);
 app.set('views', path.join(__dirname, 'app/views'));
+app.enable('strict routing');
 
 // Config db and bootstrap models
 var db = mongoose.connect(config.db);
@@ -45,6 +47,15 @@ walk(models_path);
 app.engine('html', engines.swig);
 app.set('view engine', 'html');
 
+// // Trailing slash!
+// app.use(function(req, res, next) {
+//     if (req.url.substr(-1) !== '/' && req.url.length > 1) {
+//         res.redirect(301, req.url + '/');
+//     } else {
+//         next();
+//     }
+// });
+
 app.use(express.favicon());
 app.use(express.logger('dev'));
 app.use(express.json());
@@ -63,8 +74,10 @@ app.use(function(req, res, next) {
     res.locals.user = req.user ? JSON.stringify(req.user) : 'null';
     next();
 });
+
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(app.router);
+app.use(slash());
 
 
 
