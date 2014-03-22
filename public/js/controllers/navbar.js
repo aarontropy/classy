@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('classy')
-.controller('NavController', ['$scope', 'Auth', function($scope, Auth) {
+.controller('NavController', ['$scope', '$window', 'Auth', function($scope, $window, Auth) {
     $scope.credentials = {};
 
     $scope.loginUser = function() {
@@ -18,7 +18,7 @@ angular.module('classy')
     $scope.logoutUser = function() {
         Auth.logout().success(function(data, status, headers, config) {
             $scope.user = {};
-            console.log(data);
+            $window.location.href = data.redirect || '/';
         });
     };
 
