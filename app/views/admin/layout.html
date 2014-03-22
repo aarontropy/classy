@@ -7,10 +7,8 @@
 {% block app_name %}ng-app="classy.admin" ng-controller="MainController"{% endblock %}
 
 {% block body %}
-        {% include '../includes/navbar.html' %}
-        <!-- <div class="navbar navbar-inverse navbar-fixed-top" data-ng-include="'/views/header.html'" data-role="navigation"></div> -->
-        {% block content %}{% endblock %}
-        
+    <div ng-include="'/views/navbar.html'"></div>
+    {% block content %}{% endblock %}
 {% endblock %}
 
 {% block body_foot %}

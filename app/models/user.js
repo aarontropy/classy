@@ -15,6 +15,7 @@ var UserSchema = new Schema({
         type: String,
         unique: true
     },
+    roles: [String],
     name: String,
     email: String,
     hashed_password: String,
@@ -127,8 +128,7 @@ var User = mongoose.model('User', UserSchema);
 User.find().count().exec(function(err, n) {
     if (n === 0) {
         console.log('creating new user');
-        var admin = new User({username: 'admin', password: 'admin'});
+        var admin = new User({username: 'admin', password: 'admin', roles: ['superadmin', 'admin']});
         admin.save();
     }
 });
-

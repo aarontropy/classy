@@ -1,0 +1,61 @@
+<nav class="navbar navbar-default" role="navigation" ng-controller="NavController">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">Classy</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav" ng-show="user">
+        <li><a href="#">Browse</a></li>
+        <li class="active"><a href="#">My Classy</a></li>
+        <li><a href="admin">Admin</a></li>
+      </ul>
+
+      <form class="navbar-form navbar-right" role="search">
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Search">
+        </div>
+        <button type="submit" class="btn btn-default">Submit</button>
+      </form>
+
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="#" >Sign Up</a></li>
+        <li class="divider-vertical"></li>
+
+        <li class="dropdown" ng-show="!user.username">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Sign In <b class="caret"></b></a>
+                <div class="dropdown-menu" style="padding: 15px;">
+                    <input id="username" style="margin-bottom: 15px;" type="text" name="username" placeholder="Username" size="30" ng-model="credentials.username" />
+                    <input id="password" style="margin-bottom: 15px;" type="password" name="password" placeholder="Password" size="30" ng-model="credentials.password" />
+                    <input id="remember_me" style="float: left; margin-right: 10px;" type="checkbox" name="remember_me" value="1" />
+                    <label class="string optional" for="remember_me"> Remember me</label>
+
+                    <button class="btn btn-primary" style="clear: left; width: 100%; height: 32px; font-size: 13px;" ng-click="loginUser()">Sign In</button>
+                </div>
+        </li>
+
+        <li ng-show="user.username"><a href="#" ng-click="logoutUser()">Sign out</a></li>
+      </ul>
+
+
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+
+<script>
+    $(document).ready(function() {
+
+        $('.dropdown-toggle').dropdown();
+        $('.dropdown input, .dropdown label').click(function(e) {
+            e.stopPropagation();
+        });
+    });
+</script>
