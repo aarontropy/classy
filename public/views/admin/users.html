@@ -1,0 +1,12 @@
+<section class="container" ng-controller="admin.UsersController">
+    <h1>Your Users</h1>
+
+    <div class="panel panel-default">
+          <div class="panel-heading">
+                <h3 class="panel-title">Users</h3>
+          </div>
+          <div class="panel-body">
+                <p ng-repeat="sem in semesters">{{sem.title}}</p>
+          </div>
+    </div>
+</section>
