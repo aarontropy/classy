@@ -1,8 +1,7 @@
 'use strict';
 
-angular.module('classy', ['ui.bootstrap', 'classy.system']);
-angular.module('classy.public', ['ui.bootstrap', 'classy', 'classy.system']);
-angular.module('classy.admin', ['ui.router', 'classy', 'classy.system']);
+angular.module('classy', ['ngResource', 'ui.bootstrap']);
+angular.module('classy.public', ['ui.bootstrap', 'classy']);
+angular.module('classy.admin', ['ui.router', 'classy']);
 
 
-angular.module('classy.system', []);

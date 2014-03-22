@@ -4,16 +4,13 @@
     {% include '../includes/head.html' %}
 {% endblock %}
 
-{% block app_name %}ng-app="classy.admin"{% endblock %}
+{% block app_name %}ng-app="classy.admin" ng-controller="MainController"{% endblock %}
 
 {% block body %}
         {% include '../includes/navbar.html' %}
         <!-- <div class="navbar navbar-inverse navbar-fixed-top" data-ng-include="'/views/header.html'" data-role="navigation"></div> -->
-        <section class="content">
-            <section class="container">
-                {% block content %}{% endblock %}
-            </section>
-        </section>
+        {% block content %}{% endblock %}
+        
 {% endblock %}
 
 {% block body_foot %}
@@ -32,8 +29,15 @@
     <!-- Application Controllers -->
     <script type="text/javascript" src="/js/controllers/main.js"></script>
     <script type="text/javascript" src="/js/controllers/navbar.js"></script>
+    <script type="text/javascript" src="/js/controllers/admin/dashboard.js"></script>
 
      <!-- Bootstrap -->
     <script type="text/javascript" src="/lib/bootstrap/dist/js/bootstrap.min.js"></script>
+
+    {% if (process.env.NODE_ENV == 'development') %}
+    <!-- Livereload script rendered -->
+       <script type="text/javascript" src="{{'http://' + req.host + ':35729/livereload.js'}}"></script>
+    {% endif %}
+
 {% endblock %}
 

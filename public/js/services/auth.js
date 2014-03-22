@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('classy.system').factory('Auth', ['$http', function($http) {
+angular.module('classy').factory('Auth', ['$http', function($http) {
     return {
         username: '',
         login: function(credentials) {

@@ -1,6 +1,7 @@
 'use strict';
 
-angular.module('classy').controller('NavController', ['$scope', 'Auth', function($scope, Auth) {
+angular.module('classy')
+.controller('NavController', ['$scope', 'Auth', function($scope, Auth) {
     $scope.credentials = {};
 
     $scope.loginUser = function() {

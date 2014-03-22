@@ -1,1 +1,12 @@
-<h1>Aweseome Dashboard</h1>
+<section class="container" ng-controller="admin.DashboardController">
+    <h1>Aweseome Dashboard</h1>
+
+    <div class="panel panel-default">
+          <div class="panel-heading">
+                <h3 class="panel-title">Semesters</h3>
+          </div>
+          <div class="panel-body">
+                <p ng-repeat="sem in semesters">{{sem.title}}</p>
+          </div>
+    </div>
+</section>
