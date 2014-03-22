@@ -1,0 +1,13 @@
+<!doctype html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:fb="https://www.facebook.com/2008/fbml" itemscope="itemscope" itemtype="http://schema.org/Product">
+    <head>
+        <meta charset="utf-8" />
+        <title>{% block title%}Classy{% endblock %}</title>
+        {% block head %}{% endblock %}
+    </head>
+
+    <body {% block app_name %}{% endblock %}>
+        {% block body %}{% endblock %}
+        {% block body_foot %}{% endblock %}
+    </body>
+</html>

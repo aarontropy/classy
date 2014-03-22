@@ -1,7 +1,12 @@
-<!doctype html>
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:fb="https://www.facebook.com/2008/fbml" itemscope="itemscope" itemtype="http://schema.org/Product">
+{% extends '../base_layout.html' %}
+
+{% block head %}
     {% include '../includes/head.html' %}
-    <body ng-app="classy.public" ng-controller="MainController">
+{% endblock %}
+
+{% block app_name %}ng-app="classy.public"{% endblock %}
+
+{% block body %}
         {% include '../includes/navbar.html' %}
         <!-- <div class="navbar navbar-inverse navbar-fixed-top" data-ng-include="'/views/header.html'" data-role="navigation"></div> -->
         <section class="content">
@@ -9,6 +14,25 @@
                 {% block content %}{% endblock %}
             </section>
         </section>
-        {% include '../includes/foot.html' %}
-    </body>
-</html>
+{% endblock %}
+
+{% block body_foot %}
+    {% include '../includes/angular_scripts.html' with {ui: true} only %}
+
+    <!-- Application Init -->
+    <script type="text/javascript" src="/js/app.js"></script>
+    <script type="text/javascript" src="/js/directives.js"></script>
+    <!-- <script type="text/javascript" src="/js/filters.js"></script> -->
+
+    <!-- Application Services -->
+    <script type="text/javascript" src="/js/services/auth.js"></script>
+    <script type="text/javascript" src="/js/services/semesters.js"></script>
+
+    <!-- Application Controllers -->
+    <script type="text/javascript" src="/js/controllers/main.js"></script>
+    <script type="text/javascript" src="/js/controllers/navbar.js"></script>
+
+     <!-- Bootstrap -->
+    <script type="text/javascript" src="/lib/bootstrap/dist/js/bootstrap.min.js"></script>
+{% endblock %}
+
