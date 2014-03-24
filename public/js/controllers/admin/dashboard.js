@@ -6,7 +6,7 @@ angular.module('classy.admin')
 
     $scope.semesterDetailUrl = function(id) {
         return '/semesters/' + id;
-    }
+    };
 
     $scope.find = function() {
         Semesters.query(function(semesters) {

@@ -33,7 +33,7 @@ SemesterSchema.path('title').validate(function(title) {
  */
 SemesterSchema.statics.load = function(id, cb) {
     this.findOne({_id: id}).populate('createdBy', 'name username').exec(cb);
-}
+};
 
 
 var Semester = mongoose.model('Semester', SemesterSchema);

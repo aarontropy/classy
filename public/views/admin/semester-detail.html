@@ -5,7 +5,7 @@
         <div class="panel panel-default">
             <div class="panel-heading clearfix">
                 <h3 class="panel-title pull-left">Details</h3>
-                <button type="button" class="btn btn-xs btn-default pull-right saveSemester">Save</button>
+                <button type="button" class="btn btn-xs btn-default pull-right" ng-click="save()">Save</button>
             </div>
             <div class="panel-body">
 
@@ -13,14 +13,14 @@
                         <div class="form-group">
                             <label for="semesterTitle" class="col-sm-2 control-label">Title</label>
                             <div class="col-sm-10">
-                                <input type="text" name="semesterTitle" id="semesterTitle" class="form-control" value="{{semester.title}}" required="required" title="">
+                                <input type="text" name="semesterTitle" id="semesterTitle" class="form-control" ng-model="semester.title" required="required" title="">
                             </div>
                         </div>
 
                         <div class="form-group">
                             <label for="semesterStartDate" class="col-sm-2 control-label">Start Date</label>
                             <div class="col-sm-4">
-                                <input type="date" name="semesterStartDate" id="semesterStartDate" class="form-control" value="{{semester.startDate}}" required="required" title="">
+                                <input type="date" name="semesterStartDate" id="semesterStartDate" class="form-control" ng-model="semester.startDate" required="required" title="">
                             </div>
                         </div>
                 

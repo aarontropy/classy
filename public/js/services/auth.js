@@ -15,8 +15,8 @@ angular.module('classy').factory('Auth', ['$http', function($http) {
         user.username = data.username;
     };
 
-    var loginSuccess = function(res) { loadUser(res.data); }
-    var loginError = function(res) { loadUser({}); }
+    var loginSuccess = function(res) { loadUser(res.data); };
+    var loginError = function(res) { loadUser({}); };
 
     var login = function(credentials) {
         var p = $http.post('/login', credentials);

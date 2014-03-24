@@ -1,17 +1,17 @@
 'use strict';
 
 var mongoose = require('mongoose'),
-    User = mongoose.model('User'),
+    Course = mongoose.model('Course'),
     _ = require('lodash');
 
 /**
- * Find User by Id
+ * Find Course by Id
  */
-exports.user = function(req, res, next, id) {
-    User.load(id, function(err, user) {
+exports.course = function(req, res, next, id) {
+    Course.load(id, function(err, course) {
         if (err) return next(err);
-        if (!user) return next(new Error('Failed to load user ' + id));
-        req.user = user;
+        if (!course) return next(new Error('Failed to load course ' + id));
+        req.course = course;
         next();
     });
 };
@@ -19,11 +19,11 @@ exports.user = function(req, res, next, id) {
 
 // ==== Routing ================================================================
 exports.create = function(req, res) {
-    User.create(req.body, function(err, sem) {
+    Course.create(req.body, function(err, sem) {
         if (err) {
             res.json(500, {
                 errors: err.errors,
-                user: sem
+                course: sem
             });
         } else {
             res.json(201, sem);
@@ -33,55 +33,51 @@ exports.create = function(req, res) {
 
 
 exports.update = function(req, res) {
-    var user = req.user;
-    user = _.extend(user, req.body);
+    var course = req.course;
+    course = _.extend(course, req.body);
 
-    user.save(function(err) {
+    course.save(function(err) {
         if (err) {
             res.json(500, {
                 errors: err.errors,
-                user: user
+                course: course
             });
         } else {
-            res.json(200, user);
+            res.json(200, course);
         }
     });
 };
 
 
 exports.delete = function(req, res) {
-    var user = req.user;
+    var course = req.course;
 
-    user.remove(function(err) {
+    course.remove(function(err) {
         if (err) {
             res.json(500, {
                 errors: err.errors,
-                user: user
+                course: course
             });
         } else {
-            res.json(200, 'User Deleted');
+            res.json(200, 'Course Deleted');
         }
     });
 };
 
 
 exports.read = function(req, res) {
-    res.json(req.article);
+    res.json(req.course);
 };
 
 
 exports.all = function(req, res) {
-    User.find({}, '-hashed_password -salt').sort('username').exec(function(err, users) {
+    Course.find().sort('-created').populate('createdBy', 'username').exec(function(err, courses) {
         if (err) {
             res.json(500, {
                 errors: err.errors
             });
         } else {
-            res.json(users);
+            res.json(courses);
         }
     });
-};
-
-exports.me = function(req, res) {
-    res.json(req.user || null);
 };
