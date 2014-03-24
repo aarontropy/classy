@@ -20,7 +20,6 @@ exports.logout = function(req, res) {
     res.json({message: 'Logout successful'});
 };
 
-
 exports.requireRole = function(role) {
     return function(req, res, next) {
         if (req.user && req.user.roles && req.user.roles.indexOf(role) !== -1) {

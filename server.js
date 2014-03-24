@@ -9,6 +9,7 @@ var express = require('express'),
     path = require('path'),
     engines = require('consolidate'),
     mongoose = require('mongoose'),
+    mongoStore = require('connect-mongo')(express),
     passport = require('passport'),
     fs = require('fs');
 
@@ -25,7 +26,7 @@ app.set('views', path.join(__dirname, 'app/views'));
 app.enable('strict routing');
 
 // Config db and bootstrap models
-var db = mongoose.connect(config.db);
+var db = mongoose.connect(config.db.base);
 
 var models_path = __dirname + '/app/models';
 var walk = function(path) {
@@ -55,6 +56,14 @@ app.set('view engine', 'html');
 //         next();
 //     }
 // });
+
+var sessionConfig = {
+    secret: config.sessionSecret,
+    cookie: { maxAge: 1000 * 60 * 60 * 24 * 30 }, // 30 days
+    store: new mongoStore({
+        db: config.db.name
+    })
+};
 
 app.use(express.favicon());
 app.use(express.logger('dev'));

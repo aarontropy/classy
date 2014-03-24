@@ -24,6 +24,7 @@ module.exports = function(app, passport) {
 
     app.get('/users', users.all);
     app.post('/users', users.create);
+    app.get('/users/me', users.me);
     app.get('/users/:user', users.read);
     app.put('/users/:user', users.update);
     app.del('/users/:user', users.delete);

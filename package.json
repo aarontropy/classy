@@ -17,8 +17,8 @@
     "passport-facebook": "~1.0.3",
     "passport-twitter": "~1.0.2",
     "passport-instagram": "~0.1.2",
-    "passport-remember-me": "0.0.1",
-    "express-slash": "~1.0.0"
+    "express-slash": "~1.0.0",
+    "connect-mongo": "~0.4.0"
   },
   "devDependencies": {
     "grunt": "~0.4.4",
