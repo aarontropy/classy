@@ -15,7 +15,6 @@ angular.module('classy')
 
     $scope.logoutUser = function() {
         Auth.logout().success(function(data, status, headers, config) {
-            $scope.user = {};
             $window.location.href = data.redirect || '/';
         });
     };

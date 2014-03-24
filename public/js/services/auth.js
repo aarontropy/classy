@@ -7,12 +7,16 @@ angular.module('classy').factory('Auth', ['$http', function($http) {
     
     var getUser = function() {
         $http.get('/users/me').success(function(data) { //args: data, status, headers, config
-            user = data;
+            loadUser(data);
         });
     };
 
-    var loginSuccess = function(res) { user.username = res.data.username; }
-    var loginError = function(res) { user.username = null; }
+    var loadUser = function(data) {
+        user.username = data.username;
+    };
+
+    var loginSuccess = function(res) { loadUser(res.data); }
+    var loginError = function(res) { loadUser({}); }
 
     var login = function(credentials) {
         var p = $http.post('/login', credentials);
@@ -25,6 +29,8 @@ angular.module('classy').factory('Auth', ['$http', function($http) {
         p.then(loginError, loginError);
         return p;
     };
+
+    getUser();
 
     return {
         user: user,

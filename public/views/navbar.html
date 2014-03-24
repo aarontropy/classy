@@ -27,12 +27,10 @@
       </form>
       <button type="button" class="btn btn-default navbar-btn" ng-click="test()">Test</button>
 
-      <ul class="nav navbar-nav navbar-right">
+      <ul class="nav navbar-nav navbar-right" ng-show="!user.username">
         <li><a href="#" >Sign Up</a></li>
         <li class="divider-vertical"></li>
-
-        <li>Hello {{user.username}}</li>
-        <li class="dropdown" ng-show="!user.username">
+        <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">Sign In <b class="caret"></b></a>
                 <div class="dropdown-menu" style="padding: 15px;">
                     <input id="username" style="margin-bottom: 15px;" type="text" name="username" placeholder="Username" size="30" ng-model="credentials.username" />
@@ -44,8 +42,11 @@
                 </div>
         </li>
 
-        <li ng-show="user.username"><a href="#" ng-click="logoutUser()">Sign out</a></li>
       </ul>
+
+    <ul class="nav navbar-nav navbar-right" ng-show="user.username">
+        <li ><a href="#" ng-click="logoutUser()">Sign out</a></li>
+    </ul>
 
 
     </div><!-- /.navbar-collapse -->
