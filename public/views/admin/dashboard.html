@@ -6,7 +6,7 @@
                 <h3 class="panel-title">Semesters</h3>
           </div>
           <div class="panel-body">
-                <p ng-repeat="sem in semesters">{{sem.title}}</p>
+                <p ng-repeat="sem in semesters"><a ui-sref="semester-detail({semesterId: sem._id})">{{sem.title}} {{sem._id}}</a></p>
           </div>
     </div>
 </section>

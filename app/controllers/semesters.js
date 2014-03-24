@@ -66,7 +66,7 @@ exports.delete = function(req, res) {
 
 
 exports.read = function(req, res) {
-    res.json(req.article);
+    res.json(req.semester);
 };
 
 

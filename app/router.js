@@ -29,7 +29,7 @@ module.exports = function(app, passport) {
     app.put('/users/:user', users.update);
     app.del('/users/:user', users.delete);
 
-    app.param('semseterId', sem.semester);
+    app.param('semesterId', sem.semester);
     app.param('userId', users.user);
 
 };
