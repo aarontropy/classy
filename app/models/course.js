@@ -31,7 +31,10 @@ var CourseSchema = new mongoose.Schema({
         },
         duration: Number,
         count: Number
-    }
+    },
+    startDate: Date,
+    instructor: { type: mongoose.Schema.ObjectId, ref: 'User' },
+    shortDescription: String
 });
 
 
@@ -70,8 +73,8 @@ CourseSchema.methods.getMeetings = function(start, end, cb) {
         dtstart.set('hour', time[0]).set('minute',time[1]).set('second', 0);
         
         var wds = { sun: RRule.SU, mon: RRule.MO, tue: RRule.TU, wed: RRule.WE, thu: RRule.TH, fri: RRule.FR, sat: RRule.SA };
-        var byweekday = _.pick(wds, function(value, key) { 
-            return course.rule.wkdays && course.rule.wkdays[key]; 
+        var byweekday = _.pick(wds, function(value, key) {
+            return course.rule.wkdays && course.rule.wkdays[key];
         });
         byweekday = _.values(byweekday);
         
