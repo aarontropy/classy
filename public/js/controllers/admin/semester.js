@@ -9,7 +9,10 @@ angular.module('classy.admin').controller('admin.SemesterDetailController',
         $scope.courses = Semesters.getCourses(sid);
 
         $scope.save = function() {
-            if ($scope.semester.$update) { $scope.semester.$update(); }
+            console.log("saving: ", $scope.semester);
+            if ($scope.semester.$update) {
+                $scope.semester.$update();
+            }
         };
 
         $scope.addCourse = function() {
@@ -23,5 +26,7 @@ angular.module('classy.admin').controller('admin.SemesterDetailController',
             $state.go('course-detail', {courseId: id});
         };
 
+        // ==== TINYMCE CONFIGURATION ==========================================
+        $scope.descriptionOptions = {};
 
 }]);

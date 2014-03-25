@@ -24,11 +24,6 @@
                             </div>
                         </div>
                 
-                        <div class="form-group">
-                            <div class="col-sm-4 col-sm-offset-2">
-                                <button type="button" id="btnSaveSemester" class="btn btn-primary">Submit</button>
-                            </div>
-                        </div>
                 </form>
             </div>
         </div>
@@ -36,10 +31,10 @@
         <div class="panel panel-default">
               <div class="panel-heading clearfix">
                     <h3 class="panel-title pull-left">Description</h3>
-                    <button type="button" class="btn btn-xs btn-default pull-right saveSemester">Save</button>
+                    <button type="button" class="btn btn-xs btn-default pull-right" ng-click="save()">Save</button>
               </div>
               <div class="panel-body">
-                    <div id="semesterDescription"></div>
+                    <textarea ui-tinymce="descriptionOptions" ng-model="semester.description"></textarea>
               </div>
         </div>
 

@@ -1,6 +1,6 @@
 <section class="container" ng-controller="admin.CourseDetailController">
     <h1 class='page-title'>{{course.title}}</h1>
-        <h4>for {{semester.title}}</h4>
+        <h4>for <a ui-sref="semester-detail({semesterId: semester._id})">{{semester.title}}</a></h4>
 
         <div class="panel panel-default">
               <div class="panel-heading clearfix">

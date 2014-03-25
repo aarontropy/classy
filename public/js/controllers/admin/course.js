@@ -11,7 +11,6 @@ angular.module('classy.admin').controller('admin.CourseDetailController',
         });
 
         $scope.save = function() {
-            console.log('saving', $scope.course);
             if ($scope.course.$update) {
                 $scope.course.$update();
             }

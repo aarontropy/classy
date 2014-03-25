@@ -16,7 +16,8 @@ var SemesterSchema = new mongoose.Schema({
         type: Date,
         default: Date.now
     },
-    modified: Date
+    modified: Date,
+    description: String
 });
 
 
