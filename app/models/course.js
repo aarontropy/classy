@@ -95,7 +95,10 @@ CourseSchema.methods.getMeetings = function(start, end, cb) {
         });
     }
     // no errors ever
-    cb(null, meetings);
+    if (cb) {
+        cb(null, meetings);
+    }
+    return meetings;
 
 };
 

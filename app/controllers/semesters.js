@@ -70,6 +70,21 @@ exports.read = function(req, res) {
     res.json(req.semester);
 };
 
+exports.meetings = function(req, res) {
+    var meetings = [];
+
+    Course.find({semester: req.semester._id}).exec(function(err, courses) {
+        if (err) { res.json(500, err); }
+        else {
+            _.forEach(courses, function(course) {
+                var cmeet = course.getMeetings();
+                meetings.push.apply(meetings, cmeet);
+            });
+            res.json(meetings);
+        }
+    });
+};
+
 
 exports.all = function(req, res) {
     Semester.find().sort('-created').populate('createdBy', 'username').exec(function(err, semesters) {

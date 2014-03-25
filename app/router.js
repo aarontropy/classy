@@ -23,7 +23,7 @@ module.exports = function(app, passport) {
     app.put('/semesters/:semesterId', sem.update);
     app.del('/semesters/:semesterId', sem.delete);
     app.get('/semesters/:semesterId/courses', sem.courses);
-    app.get('/semesters/:semesterId/events', sem.courses);
+    app.get('/semesters/:semesterId/meetings', sem.meetings);
 
     app.get('/courses', course.all);
     app.post('/courses', course.create);
