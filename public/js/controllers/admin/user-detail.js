@@ -8,5 +8,8 @@ angular.module('classy.admin')
 
     $scope.save = function() {
         console.log("saving: ", $scope.user);
+        if ($scope.user.$update) {
+            $scope.user.$update();
+        }
     };
 }]);

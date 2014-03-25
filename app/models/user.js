@@ -15,6 +15,8 @@ var UserSchema = new Schema({
         type: String,
         unique: true
     },
+    firstName: String,
+    lastName: String,
     roles: [String],
     name: String,
     email: String,
