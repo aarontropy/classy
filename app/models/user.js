@@ -18,6 +18,9 @@ var UserSchema = new Schema({
     roles: [String],
     name: String,
     email: String,
+    created: {type: Date, default: Date.now },
+    modified: Date,
+    lastLoggedIn: Date,
     hashed_password: String,
     provider: String,
     salt: String,
@@ -121,6 +124,13 @@ UserSchema.methods = {
         var salt = new Buffer(this.salt, 'base64');
         return crypto.pbkdf2Sync(password, salt, 10000, 64).toString('base64');
     }
+};
+
+/**
+ * Statics
+ */
+UserSchema.statics.load = function(id, cb) {
+    this.findOne({_id: id}, '-hashed_password -salt').exec(cb);
 };
 
 var User = mongoose.model('User', UserSchema);

@@ -13,6 +13,10 @@ angular.module('classy.admin').config(['$stateProvider', '$urlRouterProvider', f
         url: '/users',
         templateUrl: '/views/admin/users.html'
     })
+    .state('user-detail', {
+        url: '/users/:id',
+        templateUrl: '/views/admin/user-detail.html'
+    })
     .state('semester-detail', {
         url: '/semesters/:semesterId',
         templateUrl: '/views/admin/semester-detail.html'

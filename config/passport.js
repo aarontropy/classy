@@ -38,7 +38,10 @@ module.exports = function(passport) {
                         message: 'Invalid password'
                     });
                 }
-                return done(null, user);
+                // update lastLoggedIn
+                user.update({lastLoggedIn: new Date()}, function(err, user) {
+                    return done(null, user);
+                });
             });
         }
     ));
