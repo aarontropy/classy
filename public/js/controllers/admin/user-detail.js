@@ -12,4 +12,11 @@ angular.module('classy.admin')
             $scope.user.$update();
         }
     };
+
+    // ==== SELECT2 CONFIGURATION ==============================================
+    $scope.rolesOptions = {
+        multiple: true,
+        simple_tags: true,
+        tage: ['One', 'Two', 'Three']
+    };
 }]);
