@@ -8,6 +8,11 @@ angular.module('classy.admin')
         return '/semesters/' + id;
     };
 
+    $scope.addSemester = function() {
+        Semesters.save({title: 'New Semester'});
+        $scope.find();
+    };
+
     $scope.find = function() {
         Semesters.query(function(semesters) {
             $scope.semesters = semesters;
