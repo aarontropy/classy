@@ -21,7 +21,7 @@ angular.module('classy.admin').controller('admin.SemesterDetailController',
 
         $scope.goCourseDetail = function(id) {
             $state.go('course-detail', {courseId: id});
-        }
+        };
 
 
 }]);

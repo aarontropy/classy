@@ -30,6 +30,7 @@ module.exports = function(app, passport) {
     app.get('/courses/:courseId', course.read);
     app.put('/courses/:courseId', course.update);
     app.del('/courses/:courseId', course.delete);
+    app.get('/courses/:courseId/meetings', course.meetings);
 
     app.get('/users', users.all);
     app.post('/users', users.create);

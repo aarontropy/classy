@@ -18,7 +18,9 @@
     "passport-twitter": "~1.0.2",
     "passport-instagram": "~0.1.2",
     "express-slash": "~1.0.0",
-    "connect-mongo": "~0.4.0"
+    "connect-mongo": "~0.4.0",
+    "rrule": "~2.0.1",
+    "moment": "~2.5.1"
   },
   "devDependencies": {
     "grunt": "~0.4.4",

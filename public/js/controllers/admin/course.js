@@ -6,16 +6,20 @@ angular.module('classy.admin').controller('admin.CourseDetailController',
         var cid = $stateParams.courseId;
 
         $scope.course = Courses.get({id: cid}, function() {
+            console.log($scope.course);
             $scope.semester = Semesters.get({id: $scope.course.semester});
         });
 
         $scope.save = function() {
-            if ($scope.course.$update) { $scope.course.$update(); }
+            console.log('saving', $scope.course);
+            if ($scope.course.$update) {
+                $scope.course.$update();
+            }
         };
 
         // ==== FULLCALENDAR SETUP =============================================
         $scope.eventSource = {
-            url: "/course/" + cid + "/events/",
+            url: '/courses/' + cid + '/meetings'
         };
         $scope.eventSources = [$scope.eventSource];
 

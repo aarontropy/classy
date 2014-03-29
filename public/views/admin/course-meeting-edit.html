@@ -3,25 +3,25 @@
         <label for="input" class="col-sm-2 control-label">Meet each:</label>
         <div class="col-sm-5">
             <label class="checkbox-inline">
-                <input type="checkbox" id="courseSun" value="sun" {{isChecked course 0}}> sun
+                <input type="checkbox" id="courseSun" value="sun" ng-model="course.rule.wkdays.sun"> sun
             </label>
             <label class="checkbox-inline">
-                <input type="checkbox" id="courseMon" value="mon" {{isChecked course 1}}> mon
+                <input type="checkbox" id="courseMon" value="mon" ng-model="course.rule.wkdays.mon"> mon
             </label>
             <label class="checkbox-inline">
-                <input type="checkbox" id="courseTue" value="tue" {{isChecked course 2}}> tue
+                <input type="checkbox" id="courseTue" value="tue" ng-model="course.rule.wkdays.tue"> tue
             </label>
             <label class="checkbox-inline">
-                <input type="checkbox" id="courseWed" value="wed" {{isChecked course 3}}> wed
+                <input type="checkbox" id="courseWed" value="wed" ng-model="course.rule.wkdays.wed"> wed
             </label>
             <label class="checkbox-inline">
-                <input type="checkbox" id="courseThu" value="thu" {{isChecked course 4}}> thu
+                <input type="checkbox" id="courseThu" value="thu" ng-model="course.rule.wkdays.thu"> thu
             </label>
             <label class="checkbox-inline">
-                <input type="checkbox" id="courseFri" value="fri" {{isChecked course 5}}> fri
+                <input type="checkbox" id="courseFri" value="fri" ng-model="course.rule.wkdays.fri"> fri
             </label>
             <label class="checkbox-inline">
-                <input type="checkbox" id="courseSat" value="sat" {{isChecked course 6}}> sat
+                <input type="checkbox" id="courseSat" value="sat" ng-model="course.rule.wkdays.sat"> sat
             </label>
         </div>
 
@@ -30,21 +30,21 @@
     <div class="form-group">
         <label for="courseCount" class="col-sm-2 control-label">Total Classes:</label>
         <div class="col-sm-10">
-            <input type="number" name="courseCount" id="courseCount" class="form-control" value="{{course.rule.count}}" min="" max="" step="" required="required" title="">
+            <input type="number" name="courseCount" id="courseCount" class="form-control" ng-model="course.rule.count" min="" max="" step="" required="required" title="">
         </div>
     </div>
 
     <div class="form-group">
         <label for="courseStartTime" class="col-sm-2 control-label">Start Time:</label>
         <div class="col-sm-10">
-            <input type="time" name="courseStartTime" id="courseStartTime" class="form-control" value="{{course.rule.startTime}}" title="">
+            <input type="time" name="courseStartTime" id="courseStartTime" class="form-control" ng-model="course.rule.startTime" title="">
         </div>
     </div>
 
     <div class="form-group">
         <label for="courseDuration" class="col-sm-2 control-label">Duration:</label>
         <div class="col-sm-10">
-            <input type="text" name="courseDuration" id="courseDuration" class="form-control" value="{{course.rule.duration}}" placeholder="Hours eg. 1, 2, 1.5">
+            <input type="text" name="courseDuration" id="courseDuration" class="form-control" ng-model="course.rule.duration" placeholder="Hours eg. 1, 2, 1.5">
         </div>
     </div>
 </form>
