@@ -90,7 +90,15 @@ exports.read = function(req, res) {
 };
 
 exports.meetings = function(req, res) {
-    req.course.getMeetings(function(err, meetings) {
+    var unix_start = Number(req.query.start) || 0,
+        unix_end = Number(req.query.end) || 0,
+        start = new Date(unix_start * 1000),
+        end = new Date(unix_end * 1000);
+
+    if (!unix_start) { start = null; }
+    if (!unix_end) { end = null; }
+
+    req.course.getMeetings(start, end, function(err, meetings) {
         res.json(meetings);
     });
 };

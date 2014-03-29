@@ -1,10 +1,11 @@
 'use strict';
 
 var mongoose = require('mongoose'),
-    rrule = require('rrule'),
     moment = require('moment'),
+    RRule = require('rrule').RRule,
     _ = require('lodash'),
     colorList = require('../colorlist');
+
 
 var CourseSchema = new mongoose.Schema({
     title: {
@@ -45,39 +46,52 @@ CourseSchema.path('title').validate(function(title) {
 /**
  * Methods
  */
-CourseSchema.methods.getMeetings = function(cb) {
-    var meetings = [];
-    var Semesters = mongoose.model('Semester');
-    var startDate = this.startDate;
+CourseSchema.methods.getMeetings = function(start, end, cb) {
+    var course = this,
+        meetings = [],
+        Semesters = mongoose.model('Semester'),
+        startDate = course.startDate;
+
+    if(typeof start === 'function') {
+        cb = start;
+        start = end = null;
+    }
+
     if (!startDate) {
-        Semesters.findOne({_id: this.semester}, function(err, sem) {
+        Semesters.findOne({_id: course.semester}, function(err, sem) {
             if (err) startDate = undefined;
-            else startDate = sem.startDate;
+            else startDate = sem.startDate || new Date();
         });
     }
-    if (this.rule && this.rule.count) {
+
+    if (course.rule && course.rule.count) {
         var dtstart = moment(startDate);
-        var time = (this.rule.startTime) ? this.rule.startTime.split(':') : ['17','0'];
+        var time = (course.rule.startTime) ? course.rule.startTime.split(':') : ['17','0'];
         dtstart.set('hour', time[0]).set('minute',time[1]).set('second', 0);
         
-        var wds = [rrule.SU, rrule.MO, rrule.TU, rrule.WE, rrule.TH, rrule.FR, rrule.SA];
-        var byweekday = _.filter(wds, function(wd, idx) { return this.rule.days[idx]; });
+        var wds = { sun: RRule.SU, mon: RRule.MO, tue: RRule.TU, wed: RRule.WE, thu: RRule.TH, fri: RRule.FR, sat: RRule.SA };
+        var byweekday = _.pick(wds, function(value, key) { 
+            return course.rule.wkdays && course.rule.wkdays[key]; 
+        });
+        byweekday = _.values(byweekday);
         
-        var rule =  new rrule({
+        var rule =  new RRule({
             dtstart: dtstart.toDate(),
-            freq: rrule.WEEKLY,
+            freq: RRule.WEEKLY,
             byweekday: byweekday,
-            count: this.rule.count,
+            count: course.rule.count,
         });
 
         _.each(rule.all(), function(date, idx) {
-            meetings.push({
-                id: this._id + '_' + idx,
-                title: this.title,
-                start: date,
-                end: moment(date).add('hours', this.duration || 1).toDate(),
-                color: colorList[this.index % colorList.length]
-            });
+            if ( (!start || !end) || (date >= start && date <= end)) {
+                meetings.push({
+                    id: course._id + '_' + idx,
+                    title: course.title,
+                    start: date,
+                    end: moment(date).add('hours', course.duration || 1).toDate(),
+                    color: colorList[course.index % colorList.length]
+                });
+            }
         });
     }
     // no errors ever
