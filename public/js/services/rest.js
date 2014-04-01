@@ -3,17 +3,17 @@
 // ==== SEMESTERS ==============================================================
 
 angular.module('classy').factory('Semesters', ['$resource', function($resource) {
-    var semesters =  $resource('/semesters/:id',
+    var semesters =  $resource('/api/semesters/:id',
         { id: '@_id' },
         { update: {method: 'PUT'}}
     );
 
     semesters.getCourses = function(id, cb) {
-        return $resource('/semesters/:id/courses').query({id: id}, cb);
+        return $resource('/api/semesters/:id/courses').query({id: id}, cb);
     };
 
     semesters.addCourse = function(course, cb) {
-        return $resource('/courses').save(course, cb);
+        return $resource('/api/courses').save(course, cb);
     };
 
 
@@ -23,13 +23,13 @@ angular.module('classy').factory('Semesters', ['$resource', function($resource) 
 // ==== COURSES ================================================================
 
 angular.module('classy').factory('Courses', ['$resource', function($resource) {
-    var courses =  $resource('/courses/:id',
+    var courses =  $resource('/api/courses/:id',
         { id: '@_id' },
         { update: {method: 'PUT'}}
     );
 
     courses.meetings = function(id, cb) {
-        return $resource('/courses/:id/meetings').query({id:id}, cb);
+        return $resource('/api/courses/:id/meetings').query({id:id}, cb);
     };
 
     return courses;
@@ -39,7 +39,7 @@ angular.module('classy').factory('Courses', ['$resource', function($resource) {
 // ==== USERS ==================================================================
 
 angular.module('classy').factory('Users', ['$resource', function($resource) {
-    var users = $resource('/users/:userId',
+    var users = $resource('/api/users/:userId',
         { userId: '@_id' },
         { update: { method: 'PUT'}}
     );

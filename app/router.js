@@ -15,30 +15,35 @@ module.exports = function(app, passport) {
     app.post('/login', auth.login(passport));
     app.post('/logout', auth.logout);
 
+    app.get('/semesters', pub.semesters);
+    app.get('/semesters/:semesterId', pub.semesterDetail);;
+    app.get('/semesters/:semesterId/:courseId', pub.courseDetail);
+
 
     // ==== API ================================================================
-    app.get('/semesters', sem.all);
-    app.post('/semesters', sem.create);
-    app.get('/semesters/:semesterId', sem.read);
-    app.put('/semesters/:semesterId', sem.update);
-    app.del('/semesters/:semesterId', sem.delete);
-    app.get('/semesters/:semesterId/courses', sem.courses);
-    app.get('/semesters/:semesterId/meetings', sem.meetings);
+    app.get('/api/semesters', sem.all);
+    app.post('/api/semesters', sem.create);
+    app.get('/api/semesters/:semesterId', sem.read);
+    app.put('/api/semesters/:semesterId', sem.update);
+    app.del('/api/semesters/:semesterId', sem.delete);
+    app.get('/api/semesters/:semesterId/courses', sem.courses);
+    app.get('/api/semesters/:semesterId/meetings', sem.meetings);
 
-    app.get('/courses', course.all);
-    app.post('/courses', course.create);
-    app.get('/courses/:courseId', course.read);
-    app.put('/courses/:courseId', course.update);
-    app.del('/courses/:courseId', course.delete);
-    app.get('/courses/:courseId/meetings', course.meetings);
+    app.get('/api/courses', course.all);
+    app.post('/api/courses', course.create);
+    app.get('/api/courses/:courseId', course.read);
+    app.put('/api/courses/:courseId', course.update);
+    app.del('/api/courses/:courseId', course.delete);
+    app.get('/api/courses/:courseId/meetings', course.meetings);
 
-    app.get('/users', users.all);
-    app.post('/users', users.create);
-    app.get('/users/me', users.me);
-    app.get('/users/:userId', users.read);
-    app.put('/users/:userId', users.update);
-    app.del('/users/:userId', users.delete);
+    app.get('/api/users', users.all);
+    app.post('/api/users', users.create);
+    app.get('/api/users/me', users.me);
+    app.get('/api/users/:userId', users.read);
+    app.put('/api/users/:userId', users.update);
+    app.del('/api/users/:userId', users.delete);
 
+    // ==== PARAMETERS =========================================================
     app.param('semesterId', sem.semester);
     app.param('courseId', course.course);
     app.param('userId', users.user);

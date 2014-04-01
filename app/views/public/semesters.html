@@ -1,0 +1,11 @@
+{% extends 'layout.html' %}
+{% block content %}
+    <div class="list-group">
+        {% for semester in semesters %}
+        <a href="#" class="list-group-item active">
+            <h4 class="list-group-item-heading">{{ semester.title }}</h4>
+            <p class="list-group-item-text">Content goes here</p>
+        </a>
+        {% endfor %}
+    </div>
+{% endblock %}

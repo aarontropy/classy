@@ -18,7 +18,7 @@ angular.module('classy.admin').controller('admin.CourseDetailController',
 
         // ==== FULLCALENDAR SETUP =============================================
         $scope.eventSource = {
-            url: '/courses/' + cid + '/meetings'
+            url: '/api/courses/' + cid + '/meetings'
         };
         $scope.eventSources = [$scope.eventSource];
 

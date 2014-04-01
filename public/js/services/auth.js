@@ -6,7 +6,7 @@ angular.module('classy').factory('Auth', ['$http', function($http) {
     };
     
     var getUser = function() {
-        $http.get('/users/me').success(function(data) { //args: data, status, headers, config
+        $http.get('/api/users/me').success(function(data) { //args: data, status, headers, config
             loadUser(data);
         });
     };
