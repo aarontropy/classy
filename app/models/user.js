@@ -17,12 +17,18 @@ var UserSchema = new Schema({
     },
     firstName: String,
     lastName: String,
-    roles: [String],
     name: String,
     email: String,
     created: {type: Date, default: Date.now },
     modified: Date,
     lastLoggedIn: Date,
+    
+    registrations: [{
+        course_id: {type: mongoose.Schema.ObjectId, ref: 'Course'},
+        status: String
+    }]
+    roles: [String],
+
     hashed_password: String,
     provider: String,
     salt: String,

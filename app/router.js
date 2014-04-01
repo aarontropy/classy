@@ -42,6 +42,8 @@ module.exports = function(app, passport) {
     app.get('/api/users/:userId', users.read);
     app.put('/api/users/:userId', users.update);
     app.del('/api/users/:userId', users.delete);
+    app.post('/api/users/:userId/registrations', users.createRegistration);
+    app.del('/api/users/:userId/registrations', users.deleteRegistration);
 
     // ==== PARAMETERS =========================================================
     app.param('semesterId', sem.semester);

@@ -37,8 +37,7 @@ exports.update = function(req, res) {
     user = _.extend(user, req.body);
 
     user.save(function(err) {
-        if (err) {
-            res.json(500, {
+        if (err) { res.json(500, {
                 errors: err.errors,
                 user: user
             });
