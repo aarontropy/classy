@@ -36,6 +36,9 @@ exports.create = function(req, res) {
 exports.update = function(req, res) {
     var semester = req.semester;
     semester = _.extend(semester, req.body);
+    // prevent api updates to the following fields
+    semester = _.omit(semester, ['roles'])
+    console.log(semester);
 
     semester.save(function(err) {
         if (err) {

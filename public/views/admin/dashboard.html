@@ -16,12 +16,13 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr ng-repeat="sem in semesters">
-                            <td><a ui-sref="semester-detail({semesterId: sem._id})">{{sem.title}}</a></td>
+                        <tr ng-repeat="semester in semesters">
+                            <td><a ui-sref="semester-detail({semesterId: semester._id})">{{semester.title}}</a></td>
                             <td>
                                 <div class="btn-toolbar" role="toolbar">
                                     <div class="btn-group">
-                                        <button type="button" class="btn btn-default" ng-click="activate(semester._id)"><span class="{{activateSemesterClass(semester.active)}}"></span></button>
+                                        <!-- <button type="button" class="btn btn-default" ng-click="activate(semester._id)"><span class="{{activateSemesterClass(semester.active)}}"></span></button> -->
+                                        <button type="button" class="btn btn-default" ng-click="toggleVisible(semester)"><span class="{{visibleSemesterClass(semester.visible)}}"></span></button>
                                         <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-remove"></span></button>
                                     </div>
                                 </div>

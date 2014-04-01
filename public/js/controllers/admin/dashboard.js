@@ -18,6 +18,16 @@ angular.module('classy.admin')
         else return 'glyphicon glyphicon-star-empty';
     };
 
+    $scope.visibleSemesterClass = function(visible) {
+        if (visible) return 'glyphicon glyphicon-eye-open';
+        else return 'glyphicon glyphicon-eye-close';
+    };
+
+    $scope.toggleVisible = function(semester) {
+        semester.visible = !semester.visible;
+        semester.$update();
+    };
+
     $scope.activateSemester = function(id) {
         console.log('Activate!');
     };

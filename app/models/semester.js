@@ -18,7 +18,8 @@ var SemesterSchema = new mongoose.Schema({
     },
     modified: Date,
     description: String,
-    active: Boolean
+    active: Boolean,
+    visible: {type: Boolean, default: false }
 });
 
 

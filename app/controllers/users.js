@@ -73,9 +73,7 @@ exports.read = function(req, res) {
 exports.all = function(req, res) {
     User.find({}, '-hashed_password -salt').sort('username').exec(function(err, users) {
         if (err) {
-            res.json(500, {
-                errors: err.errors
-            });
+            res.json(500, { errors: err.errors });
         } else {
             res.json(users);
         }
