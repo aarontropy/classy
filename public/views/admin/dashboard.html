@@ -18,7 +18,14 @@
                     <tbody>
                         <tr ng-repeat="sem in semesters">
                             <td><a ui-sref="semester-detail({semesterId: sem._id})">{{sem.title}}</a></td>
-                            <td></td>
+                            <td>
+                                <div class="btn-toolbar" role="toolbar">
+                                    <div class="btn-group">
+                                        <button type="button" class="btn btn-default" ng-click="activate(semester._id)"><span class="{{activateSemesterClass(semester.active)}}"></span></button>
+                                        <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-remove"></span></button>
+                                    </div>
+                                </div>
+                            </td>
                         </tr>
                     </tbody>
                 </table>

@@ -13,6 +13,15 @@ angular.module('classy.admin')
         $scope.find();
     };
 
+    $scope.activateSemesterClass = function(active) {
+        if (active) return 'glyphicon glyphicon-star';
+        else return 'glyphicon glyphicon-star-empty';
+    };
+
+    $scope.activateSemester = function(id) {
+        console.log('Activate!');
+    };
+
     $scope.find = function() {
         Semesters.query(function(semesters) {
             $scope.semesters = semesters;

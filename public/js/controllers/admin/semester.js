@@ -9,7 +9,7 @@ angular.module('classy.admin').controller('admin.SemesterDetailController',
         $scope.courses = Semesters.getCourses(sid);
 
         $scope.save = function() {
-            console.log("saving: ", $scope.semester);
+            console.log('saving: ', $scope.semester);
             if ($scope.semester.$update) {
                 $scope.semester.$update();
             }

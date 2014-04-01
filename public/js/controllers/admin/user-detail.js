@@ -7,7 +7,7 @@ angular.module('classy.admin')
     $scope.user = Users.get({userId: uid});
 
     $scope.save = function() {
-        console.log("saving: ", $scope.user);
+        console.log('saving: ', $scope.user);
         if ($scope.user.$update) {
             $scope.user.$update();
         }
@@ -17,6 +17,5 @@ angular.module('classy.admin')
     $scope.rolesOptions = {
         multiple: true,
         simple_tags: true,
-        tage: ['One', 'Two', 'Three']
     };
 }]);

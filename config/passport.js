@@ -20,9 +20,7 @@ module.exports = function(passport) {
     // Deserialize the user object based on a pre-serialized token
     // which is the user id
     passport.deserializeUser(function(id, done) {
-        User.findOne({
-            _id: id
-        }, '-salt -hashed_password', function(err, user) {
+        User.findOne({ _id: id }, '-salt -hashed_password', function(err, user) {
             done(err, user);
         });
     });
@@ -38,10 +36,7 @@ module.exports = function(passport) {
                         message: 'Invalid password'
                     });
                 }
-                // update lastLoggedIn
-                user.update({lastLoggedIn: new Date()}, function(err, user) {
-                    return done(null, user);
-                });
+                return done(null, user);
             });
         }
     ));

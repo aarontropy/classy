@@ -71,7 +71,8 @@ app.use(express.json());
 app.use(express.urlencoded());
 app.use(express.methodOverride());
 app.use(express.cookieParser('LAKJOPA*SdygfLUf98dsl230dkKL'));
-app.use(express.session());
+
+app.use(express.session(sessionConfig));
 
 // Use passport session
 require('./config/passport')(passport);

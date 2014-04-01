@@ -17,8 +17,11 @@ var SemesterSchema = new mongoose.Schema({
         default: Date.now
     },
     modified: Date,
-    description: String
+    description: String,
+    active: Boolean
 });
+
+
 
 
 /**
@@ -32,10 +35,11 @@ SemesterSchema.path('title').validate(function(title) {
 /**
  * Statics
  */
-SemesterSchema.statics.load = function(id, cb) {
-    this.findOne({_id: id}).populate('createdBy', 'name username').exec(cb);
+SemesterSchema.statics = {
+    load: function(id, cb) {
+        this.findOne({_id: id}).populate('createdBy', 'name username').exec(cb);
+    }
 };
-
 
 var Semester = mongoose.model('Semester', SemesterSchema);
 Semester.find().count().exec(function(err,n) {
