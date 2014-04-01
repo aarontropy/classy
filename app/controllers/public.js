@@ -1,7 +1,8 @@
 'use strict';
 
 var mongoose = require('mongoose'),
-    Semesters = mongoose.model('Semester');
+    Semesters = mongoose.model('Semester'),
+    Courses = mongoose.model('Course');
 
 exports.index = function(req, res){
     res.render('public/index', { title: 'Express' });
@@ -16,7 +17,9 @@ exports.semesters = function(req, res) {
 };
 
 exports.semesterDetail = function(req, res) {
-    res.render('public/semester-detail', {semester: req.semester} );
+    Courses.find({semester: req.semester._id}).exec(function(err, courses) {
+        res.render('public/semester-detail', {semester: req.semester, courses: courses} );
+    });
 };
 
 exports.courseDetail = function(req, res) {

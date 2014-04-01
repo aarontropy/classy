@@ -34,7 +34,8 @@ var CourseSchema = new mongoose.Schema({
     },
     startDate: Date,
     instructor: { type: mongoose.Schema.ObjectId, ref: 'User' },
-    shortDescription: String
+    shortDescription: String,
+    description: String
 });
 
 

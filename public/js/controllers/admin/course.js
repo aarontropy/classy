@@ -16,6 +16,9 @@ angular.module('classy.admin').controller('admin.CourseDetailController',
             }
         };
 
+        // ==== TINYMCE CONFIGURATION ==========================================
+        $scope.descriptionOptions = {};
+
         // ==== FULLCALENDAR SETUP =============================================
         $scope.eventSource = {
             url: '/api/courses/' + cid + '/meetings'

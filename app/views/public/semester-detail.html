@@ -1,4 +1,18 @@
 {% extends 'layout.html' %}
 {% block content %}
-    <h1>Semester-Detail</h1>
+    <h1>{{semester.title}}</h1>
+    <div class="panel panel-default">
+        <div class="panel-body">
+        {{ semester.description|safe }}
+        </div>
+    </div>
+
+        <div class="list-group">
+            {% for course in courses %}
+            <a href="/semesters/{{semester._id.toString()}}/{{ course._id.toString() }}" class="list-group-item">
+                <h4 class="list-group-item-heading">{{ course.title }}</h4>
+                <p class="list-group-item-text">{{ course.shortDescription }}</p>
+            </a>
+            {% endfor %}
+        </div>
 {% endblock %}

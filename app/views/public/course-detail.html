@@ -1,4 +1,11 @@
 {% extends 'layout.html' %}
 {% block content %}
-    <h1>course-detail</h1>
+    <div class="panel panel-default">
+          <div class="panel-heading">
+                <h3 class="panel-title">{{course.title}}</h3>
+          </div>
+          <div class="panel-body">
+                {{ course.description|safe }}
+          </div>
+    </div>
 {% endblock %}
